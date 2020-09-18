@@ -13,7 +13,17 @@
    <title>ajax-ex-calendar</title>
   </head>
   <body>
+   <header>
+     <div class="container">
+      <h1></h1>
+       <div class="prev">Precedente</div>
+       <div class="next">Successivo</div>
+     </div>
+   </header>
 
+   <ul class="days">
+
+   </ul>
 
 
 
@@ -22,9 +32,9 @@
 
   <script id="day-template" type="text/x-handlebars-template">
    <div class="entry">
-    <h1>{{title}}</h1>
-    <div class="body">
-        {{body}}
+    <h1>{{month}}</h1>
+    <div class="days">
+        {{day}}
     </div>
    </div>
   </script>

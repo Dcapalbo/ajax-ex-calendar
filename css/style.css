@@ -3,6 +3,27 @@
   padding: 0px;
   margin: 0px;
 }
+body {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  width: 80%;
+  height: 100vh;
+  margin: auto;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.container div {
+  width: 100px;
+  height: 100px;
+  padding: 50px 30px;
+}
+ul {
+  text-align: center;
+}
 /* basic values */
 /* specific css style */
 /* header */

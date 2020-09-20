@@ -12,32 +12,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.28.0/moment-with-locales.min.js"></script>
    <title>ajax-ex-calendar</title>
   </head>
-  <body>
-   <header>
-     <div class="container">
-      <h1></h1>
-       <div class="prev">Precedente</div>
-       <div class="next">Successivo</div>
-     </div>
-   </header>
-
-   <ul class="days">
-
-   </ul>
-
-
-
-
-
-
-  <script id="day-template" type="text/x-handlebars-template">
-   <div class="entry">
-    <h1>{{month}}</h1>
-    <div class="days">
-        {{day}}
+   <body>
+    <div class="calendar_wrapper">
+		 <!-- Calendar -->
+		 <header>
+		  <h1>January 2018</h1>
+		  <div class="prev">&lt;&lt;Precedente</div>
+		  <div class="next">Successivo&gt;&gt;</div>
+		 </header>
+		 <!-- /Calendar -->
+		 <!-- Days -->
+		 <ul id="days">
+		 </ul>
+		 <!-- /Days -->
     </div>
-   </div>
-  </script>
-  <script src="js/main.js" charset="utf-8"></script>
+   <!-- Template -->
+   <script id="day-template" type="text/x-handlebars-template">
+      <li class="day">{{day}} {{month}} -<span class="name_holiday">{{holiday}}</span></li>
+   </script>
+	 <!-- /Template -->
+   <script src="js/main.js" charset="utf-8"></script>
   </body>
 </html>

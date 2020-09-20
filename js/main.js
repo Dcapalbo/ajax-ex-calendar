@@ -1,45 +1,67 @@
 $(document).ready(function() {
-//Descrizione:
-// Creiamo un calendario dinamico con le festività.
-// Il calendario partirà da gennaio 2018 e si concluderà a dicembre 2018 (unici dati disponibili sull’API).
-// Milestone 1
-// Creiamo il mese di Gennaio, e con la chiamata all'API inseriamo le festività.
 
-  //make a variable with the initial calendar date
+  // make a date variable
    var date = "2018-01-01";
-   //make a variable with the current date, using moment.js script
+   //make moment variable to write a more flexible code
    var momentDate = moment(date);
+   console.log(momentDate);
+   var daysInMonth = momentDate.daysInMonth();
+   console.log(daysInMonth);
+   //make the value of month and year with moment
+   var momentMonth = momentDate.month();
+   console.log(momentMonth);
+   var momentYear = momentDate.year();
 
-   //make the handlebars code variables
+   //Handlebars
    var source = $("#day-template").html();
-   var template = Handlebars.compile(source);
-   //make a cicle to find all the month's days
-   for (var i = 1; i < momentDate.daysInMonth(); i++) {
+   var template = Handlebars.compile(source)
 
-     var context = {
-       "day": i,
-       "month": momentDate.format("MMMM"),
-       "fullDate":momentDate.format("YYYY-MM-DD")
-     };
-   } console.log(i);
+   // make a cicle for to show the numbers of days inside the month
+   for (var i = 1; i <= daysInMonth; i++) {
+    var context = {
+      "day": i,
+      "month": momentDate.format("MMMM")
+    };
 
-   var html = template(context);
-   $(".days").append(html);
+    // compiling the template and append it inside the html
+    var html = template(context);
+    $("#days").append(html);
+  }
+    //make an api variable
+    apiObject = "https://flynn.boolean.careers/exercises/api/holidays";
+    //make the ajax call
+    $.ajax(
+   {
+    "url": apiObject,
+    "data": {
+      "year": momentYear,
+      "month": momentMonth
+    },
+    "method": "GET",
+    "success": function (data) {
+      var holydayData = data.response;
+      console.log(holydayData);
+      printHolyday(holydayData);
+    },
+    "error": function (err) {
+      alert("There is an error. "+ errore);
+    }
+});
 
-   //make a variable usefull to write less inside the ajax call
-   var apiCall = "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0";
-   //make an ajax call to take the data from the server
-   $.ajax
-    ({
-       "url": apiCall,
-       "method": "GET",
-       "success": function(data, status) {
-      //make a console log to control the data of the call
-        var results = data.response
-        console.log(results);
-     },
-       "error": function(request, status, error) {
-         alert("an error has occured");
-     }
-   });
+// FUNCTIONS
+// make a function to find the holiday dates and names
+  function printHolyday(holidays) {
+   for (var i = 0; i < holidays.length; i++) {
+     var holidayDate = holidays[i].date;
+     console.log(holidayDate);
+     var dayOfHoliday = moment(holidayDate).date();
+     console.log(dayOfHoliday);
+     // taking back the name of the holiday
+     var holidayName = holidays[i].name;
+     console.log(holidayName);
+     // apply the color class and write the holiday name inside of the HTML
+     $(".day:nth-child("+dayOfHoliday+")").addClass("holydays");
+     $(".day:nth-child("+dayOfHoliday+")").children(".name_holiday").text(" " +   holidayName);
+    }
+  }
 });

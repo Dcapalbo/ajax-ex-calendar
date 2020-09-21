@@ -39,20 +39,22 @@ $(document).ready(function() {
 });
 
 // FUNCTIONS
-// make a function to find the holiday dates and names
+// Make a function to find the holiday dates and names
   function printHolyday(holidays) {
    for (var i = 0; i < holidays.length; i++) {
 
      var holidayDate = holidays[i].date;
+     console.log(holidayDate);
      var dayOfHoliday = moment(holidayDate).date();
-     // taking back the name of the holiday
+     console.log(dayOfHoliday);
+     // Taking back the name of the holiday
      var holidayName = holidays[i].name;
 
-     // apply the color class and write the holiday name inside of the HTML
-     $(".day[data-date=‘" + dayOfHoliday + "’]").addClass("holydays");
-     $(".day[data-date=‘" + dayOfHoliday + "’] span").text( " " +   holidayName);
+     // Apply the color class and write the holiday name inside of the HTML
+     $(".day[data-date=‘" + dayOfHoliday + "’]").addClass("holyday");
+     $(".day[data-date=‘" + dayOfHoliday + "’]").text( " " +   holidayName).addClass("holiday");
     }
-  }
+  };
 
   function printCalendar() {
 

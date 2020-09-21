@@ -4,24 +4,45 @@
  padding: 0;
 }
 
+.arrow-container {
+display: flex;
+justify-content: space-between;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
+}
+.arrow-container div {
+  padding: 40px;
+}
 .calendar_wrapper{
   width: 500px;
   margin: auto;
 }
-.day{
+.day {
   font-weight: bold;
 }
-.day  span {
+.day span {
   color: red;
 }
 .holiday {
   color: red;
+  font-weight: bold;
 }
 .prev:hover {
   cursor: pointer;
+  color: crimson;
 }
 .next:hover {
   cursor: pointer;
+  color: crimson;
+}
+ul {
+  text-align: center;
+}
+li {
+  list-style: none;
 }
 /* basic vaues */
 /* specific css styles */

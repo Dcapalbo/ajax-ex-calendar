@@ -30,17 +30,18 @@ $(document).ready(function() {
     "success": function (data) {
       var holydayData = data.response;
       console.log(holydayData);
-      printCalendar();
-      printHolyday(holydayData);
+      renderCalendar();
+      renderHolyday(holydayData);
+      console.log(renderHolidays);
     },
     "error": function (err) {
-      alert("There is an error. "+ errore);
+      alert("There is an error. "+ err);
     }
 });
 
 // FUNCTIONS
 // Make a function to find the holiday dates and names
-  function printHolyday(holidays) {
+  function renderHolyday(holidays) {
    for (var i = 0; i < holidays.length; i++) {
 
      var holidayDate = holidays[i].date;
@@ -56,9 +57,9 @@ $(document).ready(function() {
     }
   };
 
-  function printCalendar() {
+  function renderCalendar() {
 
-     // make a cicle for to show the numbers of days inside the month
+     // make a cicle "for" to show the numbers of days inside the month
      for (var i = 1; i <= daysInMonth; i++) {
       var context = {
         "day": i,
@@ -80,8 +81,9 @@ $(document).ready(function() {
         } else {
           var newDate = momentDate.add(1, "M");
           clear()
-          printCalendar(newDate);
-          printHolidays(newDate)
+          renderCalendar(newDate);
+          renderHolidays(newDate);
+          console.log(renderHolidays);
         }
     });
     //make a function which at the click on class prev, will show the previous month
@@ -92,8 +94,9 @@ $(document).ready(function() {
         } else {
           var newDate = momentDate.subtract(1, "M");
           clear()
-          printCalendar(newDate);
-          printHolidays(newDate)
+          renderCalendar(newDate);
+          renderHolidays(newDate);
+          console.log(renderHolidays);
         }
     });
     //make a function to clear the document before to append again the next or previous month's days

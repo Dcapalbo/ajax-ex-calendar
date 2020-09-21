@@ -29,10 +29,8 @@ $(document).ready(function() {
     "method": "GET",
     "success": function (data) {
       var holydayData = data.response;
-      console.log(holydayData);
       renderCalendar();
       renderHolyday(holydayData);
-      console.log(renderHolidays);
     },
     "error": function (err) {
       alert("There is an error. "+ err);
@@ -103,5 +101,4 @@ $(document).ready(function() {
     function clear() {
       $("#days li").remove();
     };
-
 });

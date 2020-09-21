@@ -17,5 +17,11 @@
 .holiday {
   color: red;
 }
+.prev:hover {
+  cursor: pointer;
+}
+.next:hover {
+  cursor: pointer;
+}
 /* basic vaues */
 /* specific css styles */
